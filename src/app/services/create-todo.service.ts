@@ -23,8 +23,9 @@ export class CreateTodoService {
   constructor() { }
   public addService(newValue: string, newStatus: string): void{
     this.records.push({value: newValue, status: newStatus});
-
   }
-  @Input()
-  inputValue = ''
+  public deleteService(value: string)
+  {
+    this.records = this.records.filter(record => record.value !== value)
+  }
 }
