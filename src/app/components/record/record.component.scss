@@ -15,6 +15,7 @@
 .Выполненная{
     color: blue;
 }
+
 .record__text{
     width: 480px;
     background-color: white;
@@ -39,4 +40,11 @@
 
 .btn:hover{
     cursor: pointer;
+}
+
+.true{
+    text-decoration: line-through;
+}
+.false{
+    text-decoration: none;
 }
