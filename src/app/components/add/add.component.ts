@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CreateTodoService, Record } from 'src/app/services/create-todo.service';
+import { Component } from '@angular/core';
+import { CreateTodoService } from 'src/app/services/create-todo.service';
 
 @Component({
   selector: 'app-add',
@@ -11,9 +11,4 @@ export class AddComponent {
   constructor(public todoService: CreateTodoService){}
   inputValue!: string;
   inputStatus!: string;
-
-  ngOnInit(): void{
-
-  }
-
 }
