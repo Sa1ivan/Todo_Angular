@@ -1,7 +1,6 @@
-import { Injectable, Input } from '@angular/core';
-import { AddComponent } from '../components/add/add.component';
+import { Injectable } from '@angular/core';
 
-export class Record
+export class Todo
 {
   value!: string;
   status!: string;
@@ -13,23 +12,22 @@ export class Record
   providedIn: 'root'
 })
 
-
 export class CreateTodoService {
-  public records: Array<Record> =
+  public todoList: Array<Todo> =
   [
     {value: "Заметка 1", status: "Обычная", isCompleted: false},
     {value: "Заметка 2", status: "Важная", isCompleted: true},
     {value: "Заметка 3", status: "Выполненная", isCompleted: false}
   ];
   constructor() { }
-  public addService(newValue: string, newStatus: string): void{
-    this.records.push({value: newValue, status: newStatus, isCompleted: false});
+  public newRecord(newValue: string, newStatus: string): void{
+    this.todoList.push({value: newValue, status: newStatus, isCompleted: false});
   }
-  public deleteService(value: string)
+  public deleteRecord(value: string)
   {
-    this.records = this.records.filter(record => record.value !== value)
+    this.todoList = this.todoList.filter(record => record.value !== value)
   }
-  public done(id: number){
-    this.records[id].isCompleted = !this.records[id].isCompleted;
+  public closeRecord(id: number){
+    this.todoList[id].isCompleted = !this.todoList[id].isCompleted;
   }
 }
