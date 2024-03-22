@@ -1,6 +1,5 @@
-import { Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit, Output} from '@angular/core';
 import { CreateTodoService, Todo } from 'src/app/services/create-todo.service';
-import { ListComponent } from '../list/list.component';
 
 @Component({
   selector: 'app-record',
@@ -12,8 +11,15 @@ export class RecordComponent implements OnInit{
   @Input()
   public sRecord!: Todo;
 
-  constructor(public todoService: CreateTodoService){}
+  constructor(public todoService: CreateTodoService){
+
+  }
 
   ngOnInit(): void {
+  }
+
+  deleteRecord(id: number)
+  {
+    this.todoService.deleteRecord(id);
   }
 }

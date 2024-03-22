@@ -1,4 +1,4 @@
-<div class="add">
+<div class="add" #inpuElement>
     <input type="text" class="add__input" placeholder="Введите текст задачи..." [(ngModel)]="inputValue">
     <select name="status" id="status-select" class="add__select" [(ngModel)]="inputStatus">
         <option value="Обычная" class="add__option">Обычная</option>
@@ -6,4 +6,5 @@
         <option value="Выполненная" class="add__option">Выполненная</option>
     </select>
     <button class="add__button" (click)="newRecord(inputValue, inputStatus)">Добавить</button>
+    <button class="add__button" (click)="searchRecord(inputValue, inputStatus)">Поиск</button>
 </div>

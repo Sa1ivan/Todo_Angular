@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CreateTodoService } from 'src/app/services/create-todo.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { CreateTodoService, Todo } from 'src/app/services/create-todo.service';
 
 @Component({
   selector: 'app-add',
@@ -7,12 +7,21 @@ import { CreateTodoService } from 'src/app/services/create-todo.service';
   styleUrls: ['./add.component.scss']
 })
 
-export class AddComponent {
-  constructor(public todoService: CreateTodoService){}
+export class AddComponent implements OnInit{
   inputValue!: string;
   inputStatus!: string;
   sendValue!: string;
   sendStatus!: string;
+  searchObj!: {value: string, status: string};
+
+  constructor(public todoService: CreateTodoService){
+  }
+
+  ngOnInit(): void {
+
+  }
+
+  @Output() search = new EventEmitter<{value: string, status: string}>();
 
   newRecord(inputValue: string, inputStatus: string)
   {
@@ -22,4 +31,14 @@ export class AddComponent {
     this.inputValue = "";
     this.inputStatus = "";
   }
-}
+
+  searchRecord(inputValue: string, inputStatus: string)
+  {
+    this.sendValue = inputValue;
+    this.sendStatus = inputStatus;
+    this.searchObj = {value: this.sendValue, status: this.sendStatus};
+    this.search.emit(this.searchObj);
+    this.inputValue = "";
+    this.inputStatus = "";
+    }
+  }

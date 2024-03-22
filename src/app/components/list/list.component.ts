@@ -16,5 +16,31 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.todoService.todoList$.subscribe((list)=> {
+      this.todoList = list;
+      console.log(list);
+      
+    })
   }
+  filterTodo(search: {value: string, status: string})
+  {
+    this.todoList = this.todoService.todoList;
+    if(search.value == "" && search.status == "")
+    {
+      alert("Для поиска введите значения!");
+    }
+    if(search.value == "" && search.status != "")
+    {
+      this.todoList = this.todoList.filter(record => record.status == search.status);
+    }
+    if(search.value != "" && search.status == "")
+    {
+      this.todoList = this.todoList.filter(record => record.value == search.value);
+    }
+    if(search.value != "" && search.status != "")
+    {
+      this.todoList = this.todoList.filter(record => (record.value == search.value && record.status == search.status));
+    }
+  }
+
 }

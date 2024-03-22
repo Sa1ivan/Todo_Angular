@@ -1,33 +1,44 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 export class Todo
 {
   value!: string;
   status!: string;
-  isCompleted!: boolean;
+  id!: number;
 }
-
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class CreateTodoService {
+  deleteIndex?: number;
+  number = 2;
+  todoList$ = new Subject<Todo[]>();
+
   public todoList: Array<Todo> =
   [
-    {value: "Заметка 1", status: "Обычная", isCompleted: false},
-    {value: "Заметка 2", status: "Важная", isCompleted: true},
-    {value: "Заметка 3", status: "Выполненная", isCompleted: false}
+    {value: "Заметка 1", status: "Обычная", id: 0},
+    {value: "Заметка 2", status: "Важная", id: 1},
+    {value: "Заметка 3", status: "Выполненная", id: 2}
   ];
-  constructor() { }
+
+  public filterList: Array<Todo> = this.todoList;
+
+  constructor() {
+    this.todoList$.next(this.todoList);
+   }
+
   public newRecord(newValue: string, newStatus: string): void{
-    this.todoList.push({value: newValue, status: newStatus, isCompleted: false});
+    this.todoList.push({value: newValue, status: newStatus, id: this.number+=1});
+    this.todoList$.next(this.todoList);
   }
-  public deleteRecord(value: string)
+
+  public deleteRecord(id: number)
   {
-    this.todoList = this.todoList.filter(record => record.value !== value)
+    this.todoList = this.todoList.filter(record => record.id !== id);
+    this.todoList$.next(this.todoList);
   }
-  public closeRecord(id: number){
-    this.todoList[id].isCompleted = !this.todoList[id].isCompleted;
-  }
+
 }

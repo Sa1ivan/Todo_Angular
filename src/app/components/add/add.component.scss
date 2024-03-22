@@ -1,6 +1,8 @@
 .add{
-    max-width: 600px;
-    margin: 0 auto 30px;
+    max-width: 680px;
+    margin: 0 15px 30px;
+    display: flex;
+    justify-content: center;
 }
 .add__input{
     min-width: 320px;
@@ -43,5 +45,3 @@
     color: white;
     transition: color 1s, background-color 1s;
 }
-
-
