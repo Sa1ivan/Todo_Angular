@@ -1,0 +1,5 @@
+<app-add (search)="filterTodo($event)"></app-add>
+<div class="list" *ngFor="let record of todoList; let i=index;">
+    <app-record  [sRecord]="record">
+    </app-record>
+</div>

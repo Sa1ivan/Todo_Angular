@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { RecordComponent } from './components/record/record.component';
 import { AddComponent } from './components/add/add.component';
+import { ListComponent } from './components/list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RecordComponent,
-    AddComponent
+    AddComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

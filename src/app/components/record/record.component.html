@@ -1,7 +1,9 @@
-<div class="record" *ngFor="let record of this.todoService.records; let i=index;">
-    <div class="record__text {{record.status}} {{this.todoService.records[i].isCompleted}}"(click)="this.todoService.done(i)">{{record.value}}</div>
-    <div class="record__btns">
-        <button class="record__delete btn"(click)="this.todoService.deleteService(record.value)">	&#10060;</button>
-        <button class="record__edit btn">&#9997;</button>
-    </div>
+<div class="record__text {{sRecord.status}}">{{sRecord.value}}</div>
+<div class="record__btns">
+    <select name="status" id="status-select" class="add__select" [(ngModel)]="sRecord.status">
+        <option value="Обычная" class="add__option">Обычная</option>
+        <option value="Важная" class="add__option">Важная</option>
+        <option value="Выполненная" class="add__option">Выполненная</option>
+    </select>
+    <button class="record__delete btn"(click)="deleteRecord(sRecord.id)">&#10060;</button>
 </div>

@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { CreateTodoService, Record } from 'src/app/services/create-todo.service';
-import { AddComponent } from '../add/add.component';
+import { Component, Input, OnInit, Output} from '@angular/core';
+import { CreateTodoService, Todo } from 'src/app/services/create-todo.service';
 
 @Component({
   selector: 'app-record',
@@ -8,9 +7,19 @@ import { AddComponent } from '../add/add.component';
   styleUrls: ['./record.component.scss']
 })
 
-export class RecordComponent {
-  constructor(public todoService: CreateTodoService){}
-  ngOnInit(): void{
+export class RecordComponent implements OnInit{
+  @Input()
+  public sRecord!: Todo;
 
+  constructor(public todoService: CreateTodoService){
+
+  }
+
+  ngOnInit(): void {
+  }
+
+  deleteRecord(id: number)
+  {
+    this.todoService.deleteRecord(id);
   }
 }
