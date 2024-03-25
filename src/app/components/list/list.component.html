@@ -1,3 +1,4 @@
+<div class="main__title">Список задач</div>
 <app-add (search)="filterTodo($event)" (new)="newRecord($event)"></app-add>
 <div class="list" *ngFor="let record of todoList; let i=index;">
     <app-record  [sRecord]="record" (delete)="deleteRecord($event)">

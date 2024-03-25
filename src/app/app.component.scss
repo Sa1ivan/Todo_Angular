@@ -5,32 +5,19 @@
 }
 .main__container{
     max-width: 720px;
-    height: 720px;
+    min-height: 220px;
     margin: 100px auto;
     border-radius: 30px;
     border: 1px solid rgb(79, 115, 223);
     background-color: rgb(79, 115, 223);
-    box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.5)
-}
-
-.main__title{
-    margin: 20px auto;
-    width: 400px;
-    height: 40px;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.3);
-    border-radius: 30px;
-    font-family: cursive;
-    font-size: 20px;
+    box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
 }
 
 .content{
     margin: 0;
     padding: 0;
-    height: 550px;
+    min-height: 200px;
     overflow: scroll;
 }
 .content::-webkit-scrollbar {
