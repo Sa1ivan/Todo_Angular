@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { CreateTodoService, Todo } from 'src/app/services/create-todo.service';
+import { CreateTodoService } from 'src/app/services/create-todo.service';
 
 @Component({
   selector: 'app-add',
@@ -10,8 +10,6 @@ import { CreateTodoService, Todo } from 'src/app/services/create-todo.service';
 export class AddComponent implements OnInit{
   inputValue!: string;
   inputStatus!: string;
-  sendValue!: string;
-  sendStatus!: string;
   searchObj!: {value: string, status: string};
 
   constructor(public todoService: CreateTodoService){
@@ -22,23 +20,26 @@ export class AddComponent implements OnInit{
   }
 
   @Output() search = new EventEmitter<{value: string, status: string}>();
+  @Output() new = new EventEmitter<{value: string, status: string}>();
+
+  getInputsValue(inputValue: string, inputStatus: string)
+  {
+    return {value: inputValue, status: inputStatus};
+  }
 
   newRecord(inputValue: string, inputStatus: string)
   {
-    this.sendValue = inputValue;
-    this.sendStatus = inputStatus;
-    this.todoService.newRecord(this.sendValue, this.sendStatus);
+    this.searchObj = this.getInputsValue(inputValue, inputStatus);
+    this.new.emit(this.searchObj);
     this.inputValue = "";
     this.inputStatus = "";
   }
 
   searchRecord(inputValue: string, inputStatus: string)
   {
-    this.sendValue = inputValue;
-    this.sendStatus = inputStatus;
-    this.searchObj = {value: this.sendValue, status: this.sendStatus};
+    this.searchObj = this.getInputsValue(inputValue, inputStatus);
     this.search.emit(this.searchObj);
     this.inputValue = "";
     this.inputStatus = "";
-    }
   }
+}

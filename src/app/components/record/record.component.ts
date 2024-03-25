@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { CreateTodoService, Todo } from 'src/app/services/create-todo.service';
 
 @Component({
@@ -18,8 +18,10 @@ export class RecordComponent implements OnInit{
   ngOnInit(): void {
   }
 
+  @Output() delete = new EventEmitter<number>();
+
   deleteRecord(id: number)
   {
-    this.todoService.deleteRecord(id);
+    this.delete.emit(this.sRecord.id);
   }
 }

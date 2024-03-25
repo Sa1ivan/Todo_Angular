@@ -18,8 +18,6 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {
     this.todoService.todoList$.subscribe((list)=> {
       this.todoList = list;
-      console.log(list);
-      
     })
   }
   filterTodo(search: {value: string, status: string})
@@ -43,4 +41,13 @@ export class ListComponent implements OnInit {
     }
   }
 
+  newRecord(newRecord: {value: string, status: string})
+  {
+    this.todoService.newRecord(newRecord);
+  }
+
+  deleteRecord(id: number)
+  {
+    this.todoService.deleteRecord(id);
+  }
 }

@@ -30,8 +30,8 @@ export class CreateTodoService {
     this.todoList$.next(this.todoList);
    }
 
-  public newRecord(newValue: string, newStatus: string): void{
-    this.todoList.push({value: newValue, status: newStatus, id: this.number+=1});
+  public newRecord(valueObj: {value: string, status: string}): void{
+    this.todoList.push({value: valueObj.value, status: valueObj.status, id: this.number+=1});
     this.todoList$.next(this.todoList);
   }
 
