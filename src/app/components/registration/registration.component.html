@@ -1,0 +1,9 @@
+<div class="auth">
+    <h2 class="auth__title">Регистрация:</h2>
+    <div class="auth__main">
+        <input type="text" class="auth__input" placeholder="Email" [(ngModel)]="login">
+        <input type="text" class="auth__input" placeholder="Пароль" [(ngModel)]="password">
+        <input type="text" class="auth__input" placeholder="ФИО" [(ngModel)]="fullname">
+        <button type="submit" class="auth__button" (click)="sendInfo(login, password, fullname)">Зарегистрироваться</button>
+    </div>
+</div>

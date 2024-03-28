@@ -1,8 +1,9 @@
 <div class="auth">
     <h2 class="auth__title">Войти в аккаунт:</h2>
     <div class="auth__main">
-        <input type="text" class="auth__input" placeholder="Логин">
-        <input type="text" class="auth__input" placeholder="Пароль">
-        <button type="submit" class="auth__button">Войти</button>
+        <input type="text" class="auth__input" placeholder="Email" [(ngModel)]="login">
+        <input type="text" class="auth__input" placeholder="Пароль" [(ngModel)]="password">
+        <button type="submit" class="auth__button" (click)="logIn(login, password)">Войти</button>
+        <button type="submit" class="auth__button" (click)="signUp()">Зарегистрироваться</button>
     </div>
 </div>

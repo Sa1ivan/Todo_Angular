@@ -1,12 +1,25 @@
-<nav class="nav">
+<nav class="nav" *ngIf="!authSrvs.token; else loggedOut;">
     <h2 class="main__title">Навигация</h2>
     <div class="nav__content">
         <div>
-            <button class="nav__button">Главная</button>
-            <button class="nav__button">О проекте</button>
-        </div>
-        <div class="nav__logout">
-            <button class="nav__button">Выход</button>
+            <button class="nav__button" [routerLink]="['auth']">Войти</button>
+            <button class="nav__button" [routerLink]="['about']">О проекте</button>
         </div>
     </div>
 </nav>
+<router-outlet></router-outlet>
+
+<ng-template #loggedOut>
+    <nav class="nav">
+        <h2 class="main__title">Навигация</h2>
+        <div class="nav__content">
+            <div>
+                <button class="nav__button" [routerLink]="['list']">Главная</button>
+                <button class="nav__button" [routerLink]="['about']">О проекте</button>
+            </div>
+            <div class="nav__logout">
+                <button class="nav__button" (click)="logOut()">Выход</button>
+            </div>
+        </div>
+    </nav>
+</ng-template>
